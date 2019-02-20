@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Composite\Before.cs" />
+    <Compile Include="Composite\Group.cs" />
+    <Compile Include="Composite\Person.cs" />
     <Compile Include="IExample.cs" />
     <Compile Include="FactoryMethod\Example1\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
