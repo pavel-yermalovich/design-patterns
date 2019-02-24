@@ -7,7 +7,7 @@ namespace DesignPatterns.ConsoleApp
         static void Main(string[] args)
         {
             Examples.Composite.Example1.Demo();
-
+            Examples.Adapter.Example1.Demo();
             Console.ReadLine();
         }
     }

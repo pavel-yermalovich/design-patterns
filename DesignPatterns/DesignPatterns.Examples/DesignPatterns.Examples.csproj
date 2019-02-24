@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\Example1.cs" />
     <Compile Include="Composite\Example1.cs" />
     <Compile Include="IExample.cs" />
     <Compile Include="FactoryMethod\Example1\Program.cs" />
