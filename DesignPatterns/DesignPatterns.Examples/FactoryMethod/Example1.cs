@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DesignPatterns.Examples.FactoryMethod.Example1
+namespace DesignPatterns.Examples.FactoryMethod
 {
     public interface IProduct { }
 
@@ -29,11 +29,11 @@ namespace DesignPatterns.Examples.FactoryMethod.Example1
         }
     }
 
-    class Program : IExample
+    public class Example1
     {
         static ConcreteCreator Creator = new ConcreteCreator();
 
-        public void Demo()
+        public static void Demo()
         {
             var product1 = Creator.FactoryMethod("Mobile");
             var product2 = Creator.FactoryMethod("Camera");
