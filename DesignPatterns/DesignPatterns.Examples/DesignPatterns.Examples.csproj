@@ -41,10 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter\Example1.cs" />
+    <Compile Include="Bridge\Example1.cs" />
     <Compile Include="Composite\Example1.cs" />
     <Compile Include="IExample.cs" />
     <Compile Include="FactoryMethod\Example1\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton\Example1.cs" />
+    <Compile Include="Singleton\Example2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

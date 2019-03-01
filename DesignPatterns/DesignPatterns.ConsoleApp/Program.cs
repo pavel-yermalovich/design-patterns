@@ -8,6 +8,8 @@ namespace DesignPatterns.ConsoleApp
         {
             Examples.Composite.Example1.Demo();
             Examples.Adapter.Example1.Demo();
+
+            Examples.Singleton.Example2.Demo();
             Console.ReadLine();
         }
     }
