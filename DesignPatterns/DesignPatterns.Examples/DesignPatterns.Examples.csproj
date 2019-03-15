@@ -44,9 +44,15 @@
     <Compile Include="Bridge\Example1.cs" />
     <Compile Include="Composite\Example1.cs" />
     <Compile Include="FactoryMethod\Example1.cs" />
+    <Compile Include="Null Object\Example1\AutomobileBase.cs" />
+    <Compile Include="Null Object\Example1\AutoRepository.cs" />
+    <Compile Include="Null Object\Example1\BMW335XI.cs" />
+    <Compile Include="Null Object\Example1\Program.cs" />
+    <Compile Include="Null Object\Example1\MiniCooper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton\Example1.cs" />
     <Compile Include="Singleton\Example2.cs" />
+    <Compile Include="Specification\Example1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
