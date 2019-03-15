@@ -12,6 +12,7 @@ namespace DesignPatterns.ConsoleApp
             Examples.Bridge.Example1.Demo();
 
             Examples.Singleton.Example2.Demo();
+            Examples.Specification.Example1.Demo();
             Console.ReadLine();
         }
     }
