@@ -1,0 +1,37 @@
+﻿GoF Definition:
+
+Separate the construction of a complex object from its representation so that the same
+construction processes can create different representations.
+
+Concept:
+
+The Builder pattern is useful for creating complex objects that have multiple parts.
+The creation process of an object should be independent of these parts; in other words,
+the construction process does not care how these parts are assembled. In addition, you
+should be able to use the same construction process to create different representations
+of the objects.
+
+Advantages:
+
+• You direct the builder to build the objects step-by-step, and you
+promote encapsulation by hiding the details of the complex
+construction process. The director can retrieve the final product
+from the builder when the whole construction is over. In general,
+at a high level, you seem to have only one method that makes the
+complete product, but other internal methods are involved in the
+creation process. So, you have finer control over the construction
+process.
+
+• Using this pattern, the same construction process can produce
+different products.
+
+• You can also vary the internal representation of products.
+
+Drawbacks:
+
+• It is not suitable if you want to deal with mutable objects (which
+can be modified later).
+• You may need to duplicate some portion of the code. These
+duplications may have significant impact in some contexts.
+• To create more products, you need to create more concrete
+builders.

@@ -54,5 +54,11 @@
     <Compile Include="Singleton\Example2.cs" />
     <Compile Include="Specification\Example1.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Builder\Example1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Builder\About.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
