@@ -9,9 +9,10 @@ namespace DesignPatterns.Examples.Specification
     {
         public static void Demo()
         {
-            var priceSpecification = new ExpressionSpecification<Product>(p => p.Price >= 250 && p.Price <= 100000);
-            var brandsSpecification = new ExpressionSpecification<Product>(p=> 
-                p.Brand.EqualsIC("Samsung") || p.Brand.EqualsIC("Microsoft"));
+            var priceSpecification = new ExpressionSpecification<Product>(
+                p => p.Price >= 250 && p.Price <= 100000);
+            var brandsSpecification = new ExpressionSpecification<Product>(
+                p=> p.Brand.EqualsIC("Samsung") || p.Brand.EqualsIC("Microsoft"));
             var bmwSpecification = new ExpressionSpecification<Product>(p => p.Brand == "BMW");
 
             var productRepository = new ProductRepository();
@@ -41,10 +42,12 @@ namespace DesignPatterns.Examples.Specification
         {
             return new AndSpecification<T>(this, specification);
         }
+
         public ISpecification<T> Or(ISpecification<T> specification)
         {
             return new OrSpecification<T>(this, specification);
         }
+
         public ISpecification<T> Not(ISpecification<T> specification)
         {
             return new NotSpecification<T>(specification);
@@ -53,8 +56,8 @@ namespace DesignPatterns.Examples.Specification
 
     public class AndSpecification<T> : CompositeSpecification<T>
     {
-        readonly ISpecification<T> _leftSpecification;
-        readonly ISpecification<T> _rightSpecification;
+        private readonly ISpecification<T> _leftSpecification;
+        private readonly ISpecification<T> _rightSpecification;
 
         public AndSpecification(ISpecification<T> left, ISpecification<T> right)
         {
@@ -70,8 +73,8 @@ namespace DesignPatterns.Examples.Specification
 
     public class OrSpecification<T> : CompositeSpecification<T>
     {
-        readonly ISpecification<T> _leftSpecification;
-        readonly ISpecification<T> _rightSpecification;
+        private readonly ISpecification<T> _leftSpecification;
+        private readonly ISpecification<T> _rightSpecification;
 
         public OrSpecification(ISpecification<T> left, ISpecification<T> right)
         {
@@ -88,11 +91,11 @@ namespace DesignPatterns.Examples.Specification
 
     public class NotSpecification<T> : CompositeSpecification<T>
     {
-        readonly ISpecification<T> _specification;
+        private readonly ISpecification<T> _specification;
 
-        public NotSpecification(ISpecification<T> spec)
+        public NotSpecification(ISpecification<T> specification)
         {
-            _specification = spec;
+            _specification = specification;
         }
 
         public override bool IsSatisfiedBy(T entity)
