@@ -42,6 +42,11 @@
   <ItemGroup>
     <Compile Include="Adapter\Example1.cs" />
     <Compile Include="Bridge\Example1.cs" />
+    <Compile Include="Builder\Example1\BreadType.cs" />
+    <Compile Include="Builder\Example1\CheeseType.cs" />
+    <Compile Include="Builder\Example1\MeatType.cs" />
+    <Compile Include="Builder\Example1\Sandwich.cs" />
+    <Compile Include="Builder\Example1\SandwichBuilder.cs" />
     <Compile Include="Composite\Example1.cs" />
     <Compile Include="FactoryMethod\Example1.cs" />
     <Compile Include="Null Object\Example1\AutomobileBase.cs" />
@@ -54,9 +59,7 @@
     <Compile Include="Singleton\Example2.cs" />
     <Compile Include="Specification\Example1.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Builder\Example1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Builder\About.txt" />
   </ItemGroup>
