@@ -43,6 +43,7 @@
     <Compile Include="Adapter\Example1.cs" />
     <Compile Include="Bridge\Example1.cs" />
     <Compile Include="Composite\Example1.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="FactoryMethod\Example1.cs" />
     <Compile Include="Null Object\Example1\AutomobileBase.cs" />
     <Compile Include="Null Object\Example1\AutoRepository.cs" />

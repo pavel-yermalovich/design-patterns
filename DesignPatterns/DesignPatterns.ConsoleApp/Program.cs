@@ -4,7 +4,7 @@ namespace DesignPatterns.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Examples.FactoryMethod.Example1.Demo();
             Examples.Composite.Example1.Demo();
