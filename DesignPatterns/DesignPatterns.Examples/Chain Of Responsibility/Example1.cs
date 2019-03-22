@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace DesignPatterns.Examples.Chain_Of_Responsibility
 {
@@ -7,33 +6,21 @@ namespace DesignPatterns.Examples.Chain_Of_Responsibility
     {
         public static void Demo()
         {
-            List<Employee> managers = new List<Employee>
-            {
-                new Employee("William Worker", Decimal.Zero),
-                new Employee("Mary Manager", 1000),
-                new Employee("Victor Vicepres", 5000),
-                new Employee("William Worker", 20000)
-            };
+            var william = new ExpenseHandler(new Employee("William Worker", Decimal.Zero));
+            var mary = new ExpenseHandler(new Employee("Mary Manager", 1000));
+            var victor = new ExpenseHandler(new Employee("Victor Vicepres", 5000));
+            var paula = new ExpenseHandler(new Employee("William Worker", 20000));
 
-            while (ConsoleInput.TryReadDecimal("Expense report amount:", out var expenseReportAmount))
-            {
-                var expense = new ExpenseReport(expenseReportAmount);
-                bool expenseProcessed = false;
-                foreach (var approver in managers)
-                {
-                    var response = approver.ApproveExpense(expense);
-                    if (response != ApprovalResponse.BeyondApprovalLimit)
-                    {
-                        Console.WriteLine("The request was {0}.", response);
-                        expenseProcessed = true;
-                        break;
-                    }
-                }
+            william
+                .RegisterNext(mary)
+                .RegisterNext(victor)
+                .RegisterNext(paula);
 
-                if (!expenseProcessed)
-                {
-                    Console.WriteLine("No one was able to approve your expense.");
-                }
+            if (ConsoleInput.TryReadDecimal("Expense report amount:", out var expenseReportAmount))
+            {
+                IExpenseReport expense = new ExpenseReport(expenseReportAmount);
+                ApprovalResponse response = william.Approve(expense);
+                Console.WriteLine("The request was {0}", response);
             }
         }
     }
@@ -92,6 +79,60 @@ namespace DesignPatterns.Examples.Chain_Of_Responsibility
             return expenseReport.Total > _approvalLimit
                 ? ApprovalResponse.BeyondApprovalLimit
                 : ApprovalResponse.Approved;
+        }
+    }
+
+    public interface IExpenseHandler
+    {
+        ApprovalResponse Approve(IExpenseReport expenseReport);
+        IExpenseHandler RegisterNext(IExpenseHandler next);
+    }
+
+    public class ExpenseHandler : IExpenseHandler
+    {
+        private readonly IExpenseApprover _approver;
+        private IExpenseHandler _next;
+
+        public ExpenseHandler(IExpenseApprover expenseApprover)
+        {
+            _approver = expenseApprover;
+            _next = EndOfChainExpenseHandler.Instance;
+        }
+
+        public ApprovalResponse Approve(IExpenseReport expenseReport)
+        {
+            var response = _approver.ApproveExpense(expenseReport);
+
+            if (response == ApprovalResponse.BeyondApprovalLimit)
+            {
+                return _next.Approve(expenseReport);
+            }
+
+            return response;
+        }
+
+        public IExpenseHandler RegisterNext(IExpenseHandler next)
+        {
+            _next = next;
+            return _next;
+        }
+
+        public class EndOfChainExpenseHandler : IExpenseHandler
+        {
+            private EndOfChainExpenseHandler() { }
+
+            public static EndOfChainExpenseHandler Instance => _instance;
+            public ApprovalResponse Approve(IExpenseReport expenseReport)
+            {
+                return ApprovalResponse.Denied;
+            }
+
+            public IExpenseHandler RegisterNext(IExpenseHandler next)
+            {
+                throw new NotImplementedException("It's the end of the chain!");
+            }
+
+            private static readonly EndOfChainExpenseHandler _instance = new EndOfChainExpenseHandler();
         }
     }
 }
