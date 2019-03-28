@@ -121,7 +121,8 @@ namespace DesignPatterns.Examples.Chain_Of_Responsibility
         {
             private EndOfChainExpenseHandler() { }
 
-            public static EndOfChainExpenseHandler Instance => _instance;
+            public static EndOfChainExpenseHandler Instance { get; } = new EndOfChainExpenseHandler();
+
             public ApprovalResponse Approve(IExpenseReport expenseReport)
             {
                 return ApprovalResponse.Denied;
@@ -131,8 +132,6 @@ namespace DesignPatterns.Examples.Chain_Of_Responsibility
             {
                 throw new NotImplementedException("It's the end of the chain!");
             }
-
-            private static readonly EndOfChainExpenseHandler _instance = new EndOfChainExpenseHandler();
         }
     }
 }
